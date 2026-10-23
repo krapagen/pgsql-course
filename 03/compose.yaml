@@ -1,4 +1,4 @@
-name: postgres-homework-02
+name: postgres-homework-03
 
 services:
   postgres:
@@ -6,14 +6,15 @@ services:
     environment:
       POSTGRES_USER: course
       POSTGRES_PASSWORD: course_local
-      POSTGRES_DB: course_hw02
+      POSTGRES_DB: course_hw03
     volumes:
       - homework_data:/var/lib/postgresql
+      - ./:/work:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U course -d course_hw02"]
+      test: ["CMD-SHELL", "pg_isready -U course -d course_hw03"]
       interval: 2s
       timeout: 3s
-      retries: 20
+      retries: 30
       start_period: 5s
 
 volumes:
